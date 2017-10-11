@@ -30,6 +30,12 @@ public class Defenser {
 			System.out.println("Etape 4 : Faire proposition");
 			
 			proposition = gamer2.generateCode(proposition, result);
+
+			System.out.print("Proposition : ");
+			for (int j = 0; j < 4; j++){
+				System.out.print(proposition.get(j));					
+				}
+			System.out.print(" -> réponse : ");
 			
 			System.out.println("Etape 5 : Vérifier la proposition");
 		
@@ -43,7 +49,7 @@ public class Defenser {
 			}
 			
 			System.out.println("Etape 6 : Afficher le retour (combinaison trouvé ou non");
-			System.out.println("Proposition : "+proposition+" -> Réponse : "+result);
+			System.out.println(result);
 			System.out.println(result);
 			
 			if(result.equals("====")){
