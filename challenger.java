@@ -29,6 +29,12 @@ public class Challenger {
 			System.out.println("\nSaisir une combinaison à 4 chiffres : ");
 			
 			ArrayList<Integer> proposition = gamer1.getCode();
+
+			System.out.print("Proposition : ");
+			for (int j = 0; j < 4; j++){
+				System.out.print(proposition.get(j));					
+				}
+			System.out.print(" -> réponse : ");
 			
 			//Vérifier la proposition
 			String result = "";
@@ -41,7 +47,7 @@ public class Challenger {
 				} else
 					result += "+";								
 			}
-			System.out.println("Proposition : "+proposition+" -> Réponse : "+result);
+			System.out.println(result);
 			//System.out.println("Proposition : "++" -> Réponse : "+result);
 			//Afficher le retour (combinaison trouvé ou non)		
 			
