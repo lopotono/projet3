@@ -43,11 +43,13 @@ public class IA {
 			} else if(tabResult[i] == '-') {				
 				//Entre 0 et previousCode.get(i) - 1
 				int value = 0 + rand.nextInt(previousCode.get(i)-1);
-				code.add(previousCode.get(i));																
+				code.add(previousCode.get(i));	
+
 			} else if(tabResult[i] == '+') {				
 				//Entre previousCode.get(i) + 1 et 0
-				int value = previousCode.get(i) + rand.nextInt(previousCode.get(i)+1);
-				code.add(previousCode.get(i));				
+				int value = 0 + rand.nextInt(previousCode.get(i)+1);
+				code.add(previousCode.get(i));	
+								
 			}			
 			
 		}
