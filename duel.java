@@ -9,14 +9,15 @@ public class Duel {
 		System.out.println("Recherche +/-");
 		System.out.println("Mode duel");
 
-		User gamer1 = new User();
-		IA gamer2 = new IA();
+		UserDuel gamer1 = new UserDuel();
+		IADuel gamer2 = new IADuel();
 
-		ArrayList<Integer> code = gamer2.generateCode();
+		// ArrayList<Integer> codeUser = gamer1.getCode();
+		ArrayList<Integer> codeIA = gamer2.generateCode();
 
 		int nombreEssaisRestant = 10;
 
-		ArrayList<Integer> combinaison = null;
+		ArrayList<Integer> proposition = null;
 		String result = null;
 
 		// Lancement du jeu
@@ -24,43 +25,41 @@ public class Duel {
 
 			System.out.println("\nEtape 1 : saisir la combinaison");
 			// générer la combinaison
-			ArrayList<Integer> proposition = gamer1.getCode();
-			
-			//Vérification de la proposition User
+			ArrayList<Integer> propositionUser = gamer1.getCode();
+			ArrayList<Integer> propositionIA = gamer2.generateCode();
+			// Vérification de la proposition User
 			result = "";
 			for (int i = 0; i < 4; i++) {
-				if (code.get(i) == proposition.get(i)) {
+				if (propositionIA.get(i) == propositionUser.get(i)) {
 					result += "=";
-				} else if (code.get(i) < proposition.get(i)) {
+				} else if (propositionIA.get(i) < propositionUser.get(i)) {
 					result += "-";
 				} else
 					result += "+";
-			}			
-			System.out.print("Proposition : ");
-			for (int j = 0; j < 4; j++){
-				System.out.print(proposition.get(j));					
-				}
+			}
+			System.out.print("\nProposition : ");
+			for (int j = 0; j < 4; j++) {
+				System.out.print(propositionUser.get(j));
+			}
 			System.out.print(" -> réponse : " + result);
-			
-			//Vérification de la proposition IA
-			combinaison = gamer2.generateCode(code, result);
+
+			// Vérification de la proposition IA
 			result = "";
 			for (int i = 0; i < 4; i++) {
-				if (code.get(i) == combinaison.get(i)) {
+				if (propositionUser.get(i) == propositionIA.get(i)) {
 					result += "=";
-				} else if (code.get(i) < combinaison.get(i)) {
+				} else if (propositionUser.get(i) < propositionIA.get(i)) {
 					result += "-";
 				} else
-					result += "+";				
+					result += "+";
 			}
-			//Affichage de la combinaison IA pour le test
+			// Affichage de la combinaison IA pour le test
 			System.out.println("\nProposition IA : ");
-			for (int j = 0; j < 4; j++){
-				System.out.print(combinaison.get(j));					
-				}
+			for (int j = 0; j < 4; j++) {
+				System.out.print(propositionIA.get(j));
+			}
 			System.out.print(" -> réponse : " + result);
-			
-			
+
 			if (result.equals("====")) {
 				System.out.println("c'est gagné");
 				nombreEssaisRestant = 0;
