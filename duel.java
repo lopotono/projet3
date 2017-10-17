@@ -9,7 +9,7 @@ public class Duel {
 		System.out.println("Recherche +/-");
 		System.out.println("Mode duel");
 
-		UserD gamer1 = new UserD();
+		User gamer1 = new User();
 		IA gamer2 = new IA();
 
 		ArrayList<Integer> code = gamer2.generateCode();
