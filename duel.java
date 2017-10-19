@@ -1,3 +1,4 @@
+
 package testFred;
 
 import java.util.ArrayList;
@@ -13,16 +14,18 @@ public class Duel {
 		IADuel gamer2 = new IADuel();
 
 		ArrayList<Integer> codeIA = gamer2.generateCode();
-		ArrayList<Integer> codeUserDuel = gamer1.getCode();
 		// nombre total d'essais
 		int nombreEssaisRestant = 10;
-				
+		
+		//ArrayList<Integer> proposition = null;
+		
 		// lancement du jeu
 		while (nombreEssaisRestant > 0) {
-			System.out.println("saisir la combinaison");
+			
+			System.out.println("\nsaisir la combinaison");
 			ArrayList<Integer> propositionUserDuel = gamer1.getCode();
 
-			System.out.print("Proposition : ");
+			System.out.print("\nProposition : ");
 			for (int j = 0; j < 4; j++) {
 				System.out.print(propositionUserDuel.get(j));
 			}
@@ -41,14 +44,15 @@ public class Duel {
 			System.out.println(resultIA);
 			
 			ArrayList<Integer> propositionIA = gamer2.generateCode();
-			propositionIA = gamer2.generateCode(propositionIA, resultIA);
+			//proposition = gamer2.generateCode(propositionIA, resultIA);
 			// vérification de la proposition IA
 			String resultUser = "";
-			System.out.print("Proposition : ");
+			System.out.print("\nProposition : ");
 			for (int j = 0; j < 4; j++){
 				System.out.print(propositionIA.get(j));					
 				}
 			System.out.print(" -> réponse : ");
+			ArrayList<Integer> codeUserDuel = gamer1.getCode();
 			
 			for (int i = 0; i < 4; i++) {
 				if (codeUserDuel.get(i) == propositionIA.get(i)) {
@@ -74,5 +78,4 @@ public class Duel {
 
 		}
 }
-
 
