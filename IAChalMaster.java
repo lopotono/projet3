@@ -1,22 +1,24 @@
 package mastermind;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Iterator;
+import java.util.Random;
 
-public class UserChalMaster {
-	public ArrayList<Integer> getCode() {
+public class IAChalMaster {
+	public ArrayList<Integer> generateCode() {
 
-		Scanner scanner = new Scanner(System.in);
-		String str = scanner.nextLine();
+		Random r = new Random();
 
-		char[] tab = str.toCharArray();
-		ArrayList<Integer> codeUserChalMaster = new ArrayList<Integer>();
-		codeUserChalMaster.add(Integer.parseInt(Character.toString(tab[0])));
-		codeUserChalMaster.add(Integer.parseInt(Character.toString(tab[1])));
-		codeUserChalMaster.add(Integer.parseInt(Character.toString(tab[2])));
-		codeUserChalMaster.add(Integer.parseInt(Character.toString(tab[3])));
-			
-		return codeUserChalMaster;
+		ArrayList<Integer> codeIAChalMaster = new ArrayList<Integer>();
+		for (int i = 0; i < 4; i++) {
+			codeIAChalMaster.add(r.nextInt(10));
+		}
+
+		Iterator<Integer> iterator = codeIAChalMaster.iterator();
+		while (iterator.hasNext()) {
+			System.out.print(iterator.next());
+		}
+		return codeIAChalMaster;
+
 	}
-
 }
