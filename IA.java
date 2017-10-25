@@ -1,11 +1,10 @@
-package testFred;
+package fr.projet3.jeux;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
 public class IA {
-
 	public ArrayList<Integer> generateCode() {
 
 		Random r = new Random();
@@ -14,14 +13,7 @@ public class IA {
 		for (int i = 0; i < 4; i++) {
 			code.add(r.nextInt(10));
 		}
-
-		Iterator<Integer> iterator = code.iterator();
-		while (iterator.hasNext()) {
-			System.out.print(iterator.next());
-		}
-
 		return code;
-
 	}
 
 	public ArrayList<Integer> generateCode(ArrayList<Integer> previousCode, String result) {
@@ -29,7 +21,6 @@ public class IA {
 		if (previousCode == null && result == null) {
 			return generateCode();
 		}
-
 		ArrayList<Integer> code = new ArrayList<Integer>();
 
 		char[] tabResult = result.toCharArray();
@@ -51,13 +42,9 @@ public class IA {
 				int high = 10;
 				int value = rand.nextInt(high - low) + low;
 				code.add(value);
-
 			}
-
 		}
 		return code;
-
 	}
-
 }
 
