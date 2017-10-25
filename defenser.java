@@ -1,13 +1,11 @@
-package testFred;
+package fr.projet3.jeux;
 
 import java.util.ArrayList;
 
-public class Defenser {
-
-	public static void main(String[] args) {
-		System.out.println("Recherche +/-");
-		System.out.println("Mode defenser");
-		
+public class Defenseur {
+	
+	public Defenseur(){
+					
 		User gamer1 = new User();
 		IA gamer2 = new IA();
 		
@@ -20,17 +18,13 @@ public class Defenser {
 		
 		int nombreEssaisRestant = 10; // TODO : Récupérer cette valeur dans un fichier de configuration.
 		
-		//Etape 3 : Lancer le jeu
-		
-		
+		//Etape 3 : Lancer le jeu		
 		ArrayList<Integer> proposition = null;
 		String result = null;
 		
 		while(nombreEssaisRestant > 0) {
 		
-			//Etape 4 : Faire proposition
-			
-			
+			//Etape 4 : Faire proposition			
 			proposition = gamer2.generateCode(proposition, result);
 			
 			//Etape 5 : Vérifier la proposition
@@ -52,23 +46,15 @@ public class Defenser {
 			System.out.println(result);
 			//Etape 6 : Afficher le retour (combinaison trouvé ou non")
 			
-			//System.out.println(result);
-			
+			//System.out.println(result);			
 			if(result.equals("====")){
-				System.out.println("c'est gagné");
+				System.out.println("BRAVO c'est gagné !");
 				nombreEssaisRestant = 0;		
-			}
-			
-			//Etape 7 : Si combinaison trouvé fin, sinon relance 4 jusqu'à fin du nombre d'essai possible
-			
-			nombreEssaisRestant--;
-			
+			}			
+			//Etape 7 : Si combinaison trouvé fin, sinon relance 4 jusqu'à fin du nombre d'essai possible			
+			nombreEssaisRestant--;			
 		}
-
 	}
-
 }
-
-
 
 
