@@ -1,21 +1,19 @@
-package mastermind;
+package fr.projet3.jeux;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Helper {
 	public static Integer getNbValueInArray(int value, ArrayList<Integer> list) {
-		// Ecrire le code qui compte combien le nombre de fois la value est dans
-		// le tableau list.
+		
 		int count = 0;
-		for (int i = 0; i < list.size(); i++) {
-			if (list.equals(value)) 
-				count++;
-			else if (list.contains(value))
-					count = 1;			
-		}
-		return count;
-			
-	}
 
-	
+		Iterator<Integer> iterator = list.iterator();
+		while (iterator.hasNext()) {
+			if (iterator.next().equals(value)) {
+				count++;
+			}
+		}
+		return count;	
+	}			
 }

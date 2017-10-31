@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Challenger {
 
-	public Challenger() {
+	public void run() {
 
 		User gamer1 = new User();
 		IA gamer2 = new IA();
