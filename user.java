@@ -22,3 +22,26 @@ public class User {
 
 }
 
+public ArrayList<Integer> getCode(ArrayList<Integer> previousCode, String resultUser) {
+		if (previousCode == null && resultUser == null) {
+			return getCode();
+		}
+
+		ArrayList<Integer> codeUser = new ArrayList<Integer>();
+
+		char[] tabResultUser = resultUser.toCharArray();
+
+		for (int i = 0; i < 4; i++) {
+			if (tabResultUser[i] == '=') {
+				codeUser.add(previousCode.get(i));
+			} else if (tabResultUser[i] == '-') {
+				int value = previousCode.get(i) - 1;
+				codeUser.add(value);
+			} else if (tabResultUser[i] == '+') {
+				int value = previousCode.get(i) + 1;
+				codeUser.add(value);
+			}
+		}
+		return codeUser;
+	}
+}
