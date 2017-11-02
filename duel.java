@@ -1,22 +1,23 @@
+
 package fr.projet3.jeux;
 
 import java.util.ArrayList;
 
 public class Duel {
 	
-	public Duel() {
+	public void run() {
 
-		UserDuel gamer1 = new UserDuel();
+		User gamer1 = new User();
 		IA gamer2 = new IA();
 
-		ArrayList<Integer> code = gamer2.generateCode();
+		ArrayList<Integer> codeUser = gamer2.generateCode();
 		
 		System.out.println("\nSaisir la combinaison à faire deviner à IA : ");
-		ArrayList<Integer> codeUserDuel = gamer1.getCode();
+		ArrayList<Integer> code = gamer1.getCode();
 		
 		System.out.print("Votre combinaison : ");
 		for (int i = 0; i < 4; i++){
-		System.out.print(codeUserDuel.get(i));
+		System.out.print(code.get(i));
 		}
 		// nombre total d'essais
 		int nombreEssaisRestant = 10;
@@ -40,7 +41,7 @@ public class Duel {
 			// vérification de la proposition user
 			resultUser = "";
 			for (int i = 0; i < 4; i++) {
-²				if (code.get(i) == propositionUserDuel.get(i)) {
+				if (code.get(i) == propositionUserDuel.get(i)) {
 					resultUser += "=";
 				} else if (code.get(i) < propositionUserDuel.get(i)) {
 					resultUser += "-";
@@ -59,9 +60,9 @@ public class Duel {
 
 			resultIA = "";
 			for (int i = 0; i < 4; i++) {
-				if (codeUserDuel.get(i) == propositionIA.get(i)) {
+				if (codeUser.get(i) == propositionIA.get(i)) {
 					resultIA += "=";
-				} else if (codeUserDuel.get(i) < propositionIA.get(i)) {
+				} else if (codeUser.get(i) < propositionIA.get(i)) {
 					resultIA += "-";
 				} else
 					resultIA += "+";
@@ -81,4 +82,3 @@ public class Duel {
 		}
 	}
 }
-
