@@ -1,12 +1,37 @@
 
 package fr.projet3.jeux;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		Properties properties = new Properties();		
+		try {
+			FileInputStream in = new FileInputStream("D://workspace/fr.projet3.jeux/src/fr/projet3/jeux/config.properties");
+			properties.load(in);
+			in.close();
+		} catch (IOException e) {
+			System.out.println("Chargement impossible du fichier config.");
+		}
+		
+		System.out.println("JEU RECHERCHE+/-");
+		System.out.print("Nombre de cases de la combinaison secrète : ");
+		System.out.println(properties.getProperty("nombreCases", "defaultnombreCases"));
+		System.out.print("Nombre d'essais : ");
+		System.out.println(properties.getProperty("nombreEssais", "defaultnombreEssais"));
+		System.out.println();
+		System.out.println("JEU MASTERMIND");
+		System.out.print("Nombre d'essais : ");
+		System.out.println(properties.getProperty("nombreEssaisM", "defaultnombreEssais"));
+		System.out.print("Nombre de chiffres utilisables : ");
+		System.out.println(properties.getProperty("nombreChiffres", "defaultnombreChiffres"));
+		
+		System.out.println();
 
 		String jeu1 = "Recherche+/-";
 		String jeu2 = "Mastermind";
@@ -79,7 +104,8 @@ public class Main {
 					} else if (mode == '3' && choix == '2') {
 						System.out.println("Vous avez choisi " + modeDu);
 						System.out.println("L'ordinateur et vous jouez tour à tour, le premier à trouver la combinaison secrète de l'autre a gagné.");
-						// Duel duel = new Duel();
+						DuelM duelM = new DuelM();
+						duelM.run();
 					}
 
 					do {
