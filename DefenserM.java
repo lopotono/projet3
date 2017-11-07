@@ -1,7 +1,10 @@
 
+
 package fr.projet3.jeux;
 
 import java.util.ArrayList;
+
+import javax.naming.spi.DirStateFactory.Result;
 
 public class DefenserM {
 
@@ -19,21 +22,19 @@ public class DefenserM {
 		int nombreEssais = 10;
 
 		ArrayList<Integer> proposition = null;
+		int result = 0;
 		// Lancement du jeu
 
 		while (nombreEssais > 0) {
 
 			int bienPlace = 0;
 			int present = 0;
-			
-			// proposition user
-			proposition = gamer2.generateCode(proposition, bienPlace);
+						
+			proposition = gamer2.generateCode(proposition, result);
 			// Vérification de la proposition
-
 			ArrayList<Integer> temp = new ArrayList<Integer>();
 			// Etape 1 : parcourir la proposition
 			for (int i = 0; i < 4; i++) {
-
 				int value = proposition.get(i);
 				// Etape 2 : si la proposition est bien placé, incrémenté bien
 				// placé et ajouter la valeur dans temp
@@ -50,6 +51,7 @@ public class DefenserM {
 						present++;
 					}
 				}
+				result = 0;
 				System.out.print("\nProposition : ");
 				for (int j = 0; j < 4; j++) {
 					System.out.print(value);
