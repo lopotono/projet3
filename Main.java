@@ -1,15 +1,31 @@
 
+
 package fr.projet3.jeux;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Scanner;
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Logger;
+import org.apache.log4j.SimpleLayout;
+import org.apache.log4j.xml.DOMConfigurator;
+
 
 public class Main {
+	
+	private static Logger logger = Logger.getLogger(Log4j.class.getName());
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		DOMConfigurator.configure("log4j.xml");
+		Logger logRoot = Logger.getRootLogger();
+		ConsoleAppender co = new ConsoleAppender();
+		co.setName("console");
+		co.setLayout(new SimpleLayout());
+		co.activateOptions();
+		logRoot.addAppender(co);
+						
 		Properties properties = new Properties();		
 		try {
 			FileInputStream in = new FileInputStream("D://workspace/fr.projet3.jeux/src/fr/projet3/jeux/config.properties");
@@ -39,6 +55,9 @@ public class Main {
 		String modeD = "Mode défenseur";
 		String modeDu = "Mode duel";
 		char reponse = ' ', choix = ' ', mode = ' ';
+		
+		logger.info("Lancement des jeux");
+		System.out.println();
 
 		do {
 			do {
@@ -51,8 +70,9 @@ public class Main {
 				choix = sc.next().charAt(0);
 
 				if (choix != '1' && choix != '2' && choix != '3')
-					System.out.println("Taper 1, 2 ou 3.");
-
+					logger.error("Vous devez taper 1, 2 ou 3");
+					//System.out.println("Taper 1, 2 ou 3.");
+					
 				if (choix == '1')
 					System.out.println("Vous avez choisi le jeu " + jeu1 + "\n");
 				else if (choix == '2')
@@ -74,11 +94,14 @@ public class Main {
 					mode = sc.next().charAt(0);
 
 					if (mode != '1' && mode != '2' && mode != '3')
-						System.out.println("Taper 1, 2 ou 3.");
-
+						logger.error("Vous devez taper 1, 2 ou 3");
+						//System.out.println("Taper 1, 2 ou 3.");
+						
 					if (mode == '1' && choix == '1') {
-						System.out.println("Vous avez choisi " + modeC);
-						System.out.println("Vous devez trouver la combinaison secrète de l'ordinateur.");
+						logger.info("Vous avez choisi " + modeC);
+						logger.info("Vous devez trouver la combinaison secrète de l'ordinateur.");
+						//System.out.println("Vous avez choisi " + modeC);
+						//System.out.println("Vous devez trouver la combinaison secrète de l'ordinateur.");
 						Challenger challenger = new Challenger();
 						challenger.run();
 					} else if (mode == '2' && choix == '1') {
@@ -122,4 +145,5 @@ public class Main {
 
 		System.out.println("A bientôt !");
 	}
+	
 }
